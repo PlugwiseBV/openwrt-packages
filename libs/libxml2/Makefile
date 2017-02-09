@@ -73,33 +73,33 @@ TARGET_CFLAGS += $(FPIC)
 CONFIGURE_ARGS += \
 	--enable-shared \
 	--enable-static \
-	--with-c14n \
+	--without-c14n \
 	--without-catalog \
-	--with-debug \
+	--without-debug \
 	--without-docbook \
-	--with-html \
+	--without-html \
 	--without-ftp \
 	--without-http \
 	--without-iconv \
 	--without-iso8859x \
 	--without-legacy \
-	--with-output \
+	--without-output \
 	--without-pattern \
 	--without-push \
 	--without-python \
 	--with-reader \
 	--without-readline \
 	--without-regexps \
-	--with-sax1 \
+	--without-sax1 \
 	--with-schemas \
-	--with-threads \
+	--without-threads \
 	--with-tree \
 	--with-valid \
 	--with-writer \
 	--with-xinclude \
 	--with-xpath \
-	--with-xptr \
-	--with-zlib=$(STAGING_DIR)/usr \
+	--without-xptr \
+	--without-zlib \
 	--without-lzma
 
 HOST_CONFIGURE_ARGS += \
