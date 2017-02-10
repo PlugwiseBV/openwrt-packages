@@ -73,16 +73,16 @@ endef
 
 define Host/Compile
 	$(MAKE) $(HOST_JOBS) -C $(HOST_BUILD_DIR) \
-		DPREFIX=$(STAGING_DIR_HOSTPKG) \
+		DPREFIX=$(STAGING_DIR)/host \
 		TARGET_CFLAGS="$(HOST_CFLAGS)" \
 		TARGET_LDFLAGS="$(HOST_LDFLAGS)"
 endef
 
 define Host/Install
 	$(MAKE) $(HOST_JOBS) -C $(HOST_BUILD_DIR) \
-		DPREFIX=$(STAGING_DIR_HOSTPKG) \
+		DPREFIX=$(STAGING_DIR)/host \
 		install
-	$(CP) $(STAGING_DIR_HOSTPKG)/bin/luajit-$(PKG_VERSION) $(STAGING_DIR_HOSTPKG)/bin/$(PKG_NAME)
+	$(CP) $(STAGING_DIR)/host/bin/luajit-$(PKG_VERSION) $(STAGING_DIR)/host/bin/$(PKG_NAME)
 endef
 
 $(eval $(call HostBuild,luajit))
