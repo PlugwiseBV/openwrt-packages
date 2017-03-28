@@ -11,10 +11,11 @@ PKG_NAME:=luasec
 PKG_VERSION:=0.6
 PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://github.com/brunoos/luasec/archive/
-PKG_MD5SUM:=14e1aef6d2aae96bbf98afc6b6634af2
-PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_NAME)-$(PKG_VERSION)
+PKG_COMMIT_HASH:=ea8c0b9bf7e2d7a89b24a4a30a01aedef7f14f10
+PKG_SOURCE:=$(PKG_COMMIT_HASH).tar.gz
+PKG_SOURCE_URL:=https://github.com/PlugwiseBV/lua-sec/archive/
+PKG_MD5SUM:=d8433ca9b7ec2e6ebdb3bc296007e199
+PKG_BUILD_DIR:=$(BUILD_DIR)/lua-sec-$(PKG_COMMIT_HASH)
 
 MAINTAINER:=W. Michael Petullo <mike@flyn.org>
 PKG_LICENSE:=MIT
@@ -43,8 +44,9 @@ endef
 MAKE_FLAGS += \
 	INCDIR="$(TARGET_CPPFLAGS) -I." \
 	LIBDIR="$(TARGET_LDFLAGS) -L./luasocket" \
-	LUACPATH="$(PKG_INSTALL_DIR)/usr/lib/lua" \
-	LUAPATH="$(PKG_INSTALL_DIR)/usr/lib/lua"
+	DESTDIR="$(PKG_INSTALL_DIR)" \
+	LUACPATH="/usr/lib/lua" \
+	LUAPATH="/usr/lib/lua"
 
 define Build/Compile
 $(call Build/Compile/Default,linux)
