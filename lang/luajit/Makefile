@@ -83,6 +83,7 @@ define Host/Install
 		DPREFIX=$(STAGING_DIR)/host \
 		install
 	$(CP) $(STAGING_DIR)/host/bin/luajit-$(PKG_VERSION) $(STAGING_DIR)/host/bin/$(PKG_NAME)
+	$(CP) -r $(STAGING_DIR)/host/share/luajit-$(PKG_VERSION) $(STAGING_DIR)/host/share/$(PKG_NAME)
 endef
 
 $(eval $(call HostBuild,luajit))
