@@ -26,7 +26,7 @@ define Package/luajit
  CATEGORY:=Languages
  TITLE:=LuaJIT
  URL:=http://www.luajit.org
- DEPENDS:=@(i386||x86_64||arm||armeb||powerpc||mips||mipsel)
+ DEPENDS:=@(i386||x86_64||arm||armeb||aarch64||powerpc||mips||mipsel)
 endef
 
 define Package/luajit/description
@@ -37,8 +37,10 @@ TARGET_CFLAGS += $(FPIC) -std=gnu99
 HOST_CFLAGS += $(FPIC) -std=gnu99
 
 ifeq ($(HOST_ARCH),x86_64)
-  ifeq ($(CONFIG_x86_64),)
-    HOST_BITS := -m32
+  ifneq ($(ARCH),aarch64)
+    ifeq ($(CONFIG_x86_64),)
+      HOST_BITS := -m32
+     endif
   endif
 endif
 
