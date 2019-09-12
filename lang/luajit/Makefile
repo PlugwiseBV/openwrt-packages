@@ -25,6 +25,7 @@ define Package/luajit
  TITLE:=LuaJIT
  URL:=https://www.luajit.org
  DEPENDS:=@(i386||x86_64||arm||armeb||aarch64||powerpc||mips||mipsel)
+ PROVIDES:=luabitop
 endef
 
 define Package/luajit/description
