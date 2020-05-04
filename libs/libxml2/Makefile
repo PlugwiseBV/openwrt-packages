@@ -78,11 +78,17 @@ CONFIGURE_ARGS += \
 	--without-debug \
 	--without-docbook \
 	--without-html \
+	--without-fexceptions \
 	--without-ftp \
+	--without-history \
+	--without-html \
 	--without-http \
 	--without-iconv \
+	--without-icu \
 	--without-iso8859x \
 	--without-legacy \
+	--without-mem-debug \
+	--without-minimum \
 	--without-output \
 	--without-pattern \
 	--without-push \
@@ -90,17 +96,21 @@ CONFIGURE_ARGS += \
 	--with-reader \
 	--without-readline \
 	--without-regexps \
+	--without-run-debug \
 	--without-sax1 \
 	--with-schemas \
+	--without-schematron \
 	--without-threads \
-	--with-tree \
-	--with-valid \
-	--with-writer \
-	--with-xinclude \
-	--with-xpath \
+	--without-thread-alloc \
+	--without-tree \
+	--without-valid \
+	--without-writer \
+	--without-xinclude \
+	--without-xpath \
 	--without-xptr \
 	--without-zlib \
-	--without-lzma
+	--without-lzma \
+	--without-coverage
 
 HOST_CONFIGURE_ARGS += \
 	--enable-shared \
