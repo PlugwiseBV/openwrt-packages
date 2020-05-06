@@ -8,12 +8,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=libxml2
-PKG_VERSION:=2.9.10
+PKG_VERSION:=2.9.10-mainline
 PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=http://xmlsoft.org/sources/
-PKG_HASH:=aafee193ffb8fe0c82d4afef6ef91972cbaf5feea100edc2f262750611b4be1f
+PKG_SOURCE_PROTO:=git
+PKG_SOURCE_URL=git@github.com:GNOME/libxml2.git
+PKG_SOURCE_VERSION:=a230b728f1289dd24c1666856ac4fb55579c6dfb
 
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=COPYING
