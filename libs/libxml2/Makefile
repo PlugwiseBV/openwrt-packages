@@ -99,7 +99,7 @@ CONFIGURE_ARGS += \
 	--without-run-debug \
 	--without-sax1 \
 	--with-schemas \
-	--without-schematron \
+	--with-schematron \
 	--without-threads \
 	--without-thread-alloc \
 	--without-tree \
