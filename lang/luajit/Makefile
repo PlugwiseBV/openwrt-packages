@@ -2,12 +2,15 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=luajit
 PKG_VERSION:=2.1.0-beta3
-PKG_RELEASE:=5
+PKG_RELEASE:=6
 
-PKG_SOURCE:=LuaJIT-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://luajit.org/download
-PKG_HASH:=1ad2e34b111c802f9d0cdf019e986909123237a28c746b21295b63c9e785d9c3
-PKG_BUILD_DIR:=$(BUILD_DIR)/LuaJIT-$(PKG_VERSION)
+PKG_SOURCE_URL:=https://github.com/LuaJIT/LuaJIT.git
+PKG_SOURCE_PROTO=git
+PKG_SOURCE_DATE:=2022-09-14
+PKG_SOURCE_VERSION:=dad04f1754723e76ba9dcf9f401f3134a0cd3972
+PKG_HASH:=63309c9774b38ae1664b332e5aa6691adba8517da988c3adcf3057d858737543
+
+PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
 
 PKG_MAINTAINER:=Morteza Milani <milani@pichak.co>
 PKG_LICENSE:=MIT
@@ -25,7 +28,7 @@ define Package/luajit
  TITLE:=LuaJIT
  URL:=https://www.luajit.org
  DEPENDS:=@(i386||x86_64||arm||armeb||aarch64||(powerpc&&HAS_FPU)||mips||mipsel||mips64)
- PROVIDES:=luabitop
+ PROVIDES:=lua luabitop
 endef
 
 define Package/luajit/description
@@ -74,17 +77,16 @@ endef
 
 define Host/Compile
 	$(MAKE) $(HOST_JOBS) -C $(HOST_BUILD_DIR) \
-		DPREFIX=$(STAGING_DIR)/host \
+		DPREFIX=$(STAGING_DIR_HOSTPKG) \
 		TARGET_CFLAGS="$(HOST_CFLAGS)" \
 		TARGET_LDFLAGS="$(HOST_LDFLAGS)"
 endef
 
 define Host/Install
 	$(MAKE) $(HOST_JOBS) -C $(HOST_BUILD_DIR) \
-		DPREFIX=$(STAGING_DIR)/host \
+		DPREFIX=$(STAGING_DIR_HOSTPKG) \
 		install
-	$(CP) $(STAGING_DIR)/host/bin/luajit-$(PKG_VERSION) $(STAGING_DIR)/host/bin/$(PKG_NAME)
-	$(CP) -r $(STAGING_DIR)/host/share/luajit-$(PKG_VERSION) $(STAGING_DIR)/host/share/$(PKG_NAME)
+	$(CP) $(STAGING_DIR_HOSTPKG)/bin/luajit-$(PKG_VERSION) $(STAGING_DIR_HOSTPKG)/bin/$(PKG_NAME)
 endef
 
 $(eval $(call HostBuild,luajit))
